@@ -17,7 +17,7 @@ all_gm=nb.load('/home/arman/london_nmo/London/working/\
 nifti_masker = NiftiMasker(mask = '/home/arman/london_nmo/\
         London/working/mvpa/gm/mask/\
         fsl_bin_mask.nii.gz', standardize=True)
-        all_gm=nifti_masker.fit_transform(all_gm)
+all_gm=nifti_masker.fit_transform(all_gm)
 df = pd.read_csv('/home/arman/statistical_analysis_with_r_files/\
         london_nmo/london_lesion_load.csv', 
                          index_col=False, header = None)
@@ -32,7 +32,7 @@ df = pd.read_csv('/home/arman/london_nmo/London/\
 lesion_load = df[:][2].values
 targets = df[:][1].values
 targets = [w.replace('MS', '1') for w in targets]
-targets = [w.replace('NMO', '0') for w in targets]
+targets = [w.replace('NMO', '-1') for w in targets]
 
 targets = np.array(targets)
 
