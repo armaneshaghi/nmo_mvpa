@@ -69,13 +69,13 @@
 \title{Cortical thickness and surface area as biomarkers to differentiate multiple sclerosis 
 and neuromyelitis optica: a multivariate pattern classification study} % Poster title
 
-\author{Arman Eshaghi, Viktor Wottschell, Maximiliano Calabrese, Daniel Alexander, Mohammad Ali Sahraian, Olga Ciccarelli} % Author(s)
+\author{Arman Eshaghi, Viktor Wottschel, Massimiliano Calabrese, Daniel Alexander, Mohammad Ali Sahraian, Olga Ciccarelli} % Author(s)
 
-\institute{MS Research Center, Neuroscience Institute, Tehran University of Medical Sciences, Terhan, Iran
+\institute{MS Research Center, Neuroscience Institute, Tehran University of Medical Sciences, Tehran, Iran
 
 Queen Square MS Centre, University College London (UCL) Institute of Neurology, London, United Kingdom
 
-Centre for Medical Image Computing and Computer Science (CMIC), University College London, London, United Kingdom
+Centre for Medical Image Computing (CMIC),Department of Computer Science, University College London, London, United Kingdom
 
 Department of Neurological and Movement Sciences, University of Verona, Verona, Italy
 
@@ -151,7 +151,7 @@ surface area, and volumes of deep grey matter nuclei
 \begin{block}{Introduction}
 
 Grey matter (GM) is affected in both multiple sclerosis (MS) and neuromyelitis optica (NMO) with different underlying mechanisms, and therefore it has been successfully used as a biomarker to discriminate NMO from MS (e.g. lesions detected with double-inversion recovery technique). 
-However, it is still not clear whether the pattern in which GM changes occur in MS and NMO could be used to differentiate these  two disorders. We use cortical thickness and cortical surface area as two independent measures that could provide imoprtant information to differerntiate MS from NMO. Since it is important to have reproducible findings, we included two cohorts from two different countries. 
+However, it is still not clear whether the pattern in which GM changes occur in MS and NMO could be used to differentiate these  two disorders. We use cortical thickness and cortical surface area as two independent measures that could provide important information to differentiate MS from NMO. Since it is important to have reproducible findings, we included two cohorts from two different countries. 
 
 
 
@@ -180,7 +180,7 @@ MPRAGE) and FLAIR with 1.5T in Padua and 3T scanners in Tehran.
 
 \begin{block}{Image analysis(1)}
 
-We calculated cortical thickness and area in 50 regions according to LONI probabilistic atlas (LPBA40). Cortical thickness was calculated with diffeomorphic based estimation of thickness in ANTs (DiReCT).
+We calculated cortical thickness and surface area in 50 regions according to LONI probabilistic atlas (LPBA40). Cortical thickness was calculated with diffeomorphic based estimation of thickness in ANTs (DiReCT).
 
 \begin{figure}
 \includegraphics[width=0.9\linewidth]{NMO_THICKNESS_PAPER.png}
@@ -206,9 +206,9 @@ We calculated cortical thickness and area in 50 regions according to LONI probab
 
 \begin{block}{Image analysis(2)}
 To calculate \textbf{cortical volume} in each region of LPBA40 atlas we used Atropos to segment GM, and then calculated volumes. Cortical surface was then calculated in each region as follows:
-  
+ 
 \begin{equation}
-Surface\,area = \frac{Volume}{Thickness}
+\mathrm{Surface\,area = \frac{Volume}{Thickness}}
 \label{eqn:SurfaceEqn}
 \end{equation}
 
@@ -217,18 +217,11 @@ intensity to automatically segment subcortical structures. Volumes of each struc
 \end{block}
 
 \begin{block}{Statistical analysis}
-We used random forest technique as the method for classification. 
-We randomly assigned each subject (from both cohorts) to training and test sets, 
-so that each of sets will contain half of all patients. Next, we trained random forests 
-on the training set and cross-validated on the left out half. This procedure was 
-iterated for 5000 times. Mean and standard deviation for accuracy of 5000 trained 
-and cross-validated models were calculated. Accuracy is defined as the sum of true 
-positives (patients with MS classified as MS) and true negatives (patients with NMO 
-classified as NMO) divided by all patients in the test set. To calculate the statistical 
-significance of our classifier against null hypothesis (a random classifier) we used 
-permutation testing P-value is defined 
-as the number of times the random classifier has equal or more accuracy than the 
-obtained accuracy from correct labels (MS or NMO) divided by 5000.
+We used random forests technique as the method for classification. We randomly assigned each subject (from both cohorts) to training and test sets, so that each of sets contained half of all patients. Next, we trained random forests 
+on the training set and cross-validated on the left out half. This procedure was iterated for 5000 times. Mean and standard deviation for accuracy of 5000 trained and cross-validated models were calculated. Accuracy is defined as the sum of true 
+positives (patients with MS classified as MS) and true negatives (patients with NMO classified as NMO) divided by all patients in the test set. To calculate the statistical significance of our classifier against null hypothesis (a random classifier) we used 
+permutation testing with 5000 permutations. P-value is defined 
+as the number of times the random classifier has equal or more accuracy than the obtained accuracy from correct labels (MS or NMO) divided by 5000.
 
 \end{block}
 
@@ -239,15 +232,14 @@ obtained accuracy from correct labels (MS or NMO) divided by 5000.
 
 \begin{block}{Results}
 
-Disease and demographic characteristics are shown in Figure 1.
-Classifier with cortical volume gave 60\% classification accuracy, which was not different from a random classifier (P-value > 0.05).Classifier with cortical thickness gave 62\% (standard deviation = 0.11, p-value=0.03) accuracy. Feature importance as calculated inside random forest method is shown in Figure 2. Three most important regions to distinguish between two groups are: Left precuneus, left insular cortex, and the right fusiform gyrus.
+Disease and demographic characteristics are shown in Figure 2.
+Classifier with cortical volume gave 60\% classification accuracy, which was not different from a random classifier (P-value > 0.05). Classifier using cortical thickness as its features gave 62\% (standard deviation = 0.11, p-value=0.03) accuracy. Feature importance as calculated inside random forests method is shown in Figure 3. The three most important regions to distinguish between two groups are: The left precuneus, left insular cortex, and the right fusiform gyrus.
 
-The mean accuracy of the classifier with surface areas was 68\% (standard deviation = 0.13, P-value=0.03). Importance of each region in discrimination between two groups is shown in Figure 3. The three most important regions are: Left parahippocampal gyrus, right middle orbitofrontal gyrus, and right middle frontal gyrus.
+The mean accuracy of the classifier using surface areas as its features was 68\% (standard deviation = 0.13, P-value=0.03). Importance of each region in discrimination between two groups is shown in Figure 4. The three most important regions are: Left parahippocampal gyrus, right middle orbitofrontal gyrus, and right middle frontal gyrus.
 
-The mean accuracy of the classifier when using subcortical volumes was 
-72\% (standard deviation = 0.13, p-value = 0.03). Most important regions for differentiation were: the left thalamus, right pallidum, and right thalamus (Figure 4 and 5).
+The mean accuracy of the classifier when using subcortical volumes as its features was 72\% (standard deviation = 0.13, P-value = 0.03). The most important regions for differentiation are: the left thalamus, right pallidum, and right thalamus (Figure 5).
 
-When using a combination of all measures from cortical thickness, surface and subcortical volumes, the mean accuracy reached 74\% (standard deviation = 0.10, P-value = 0.03) (Figure 6).
+When using a classifier with combination of all measures from cortical thickness, surface and subcortical volumes, the mean accuracy reached 74\% (standard deviation = 0.10, P-value = 0.03).
 
 
 
@@ -340,7 +332,7 @@ Combination of all the above & 74\% (p=0.03) \\
 
 \begin{figure}
 \includegraphics[width=0.7\linewidth]{v3_image_importance.png}
-\caption{Imortance of cortical thickness (upper row) and surface area (lower row) to differentiate between MS and NMO in each region}
+\caption{Importance of cortical thickness (upper row) and surface area (lower row) to differentiate between MS and NMO in each region}
 \end{figure}
 
 \begin{block}{Summary of findings}
@@ -355,7 +347,7 @@ method, which had an accuracy of 62\%, 68\%, 73\% and 74\% in models using  cort
 
 \begin{alertblock}{Conclusion}
 
-\textbf{Cortical thickness}, \textbf{cortical surface} and \textbf{volumes of deep grey matter nuclei} provide up to 74 percent accuracy in discriminating MS from NMO. The results are reproducible across centers in different countries.
+\textbf{Cortical thickness}, \textbf{cortical surface} and \textbf{volumes of deep grey matter nuclei} provide up to 74 percent accuracy in discriminating MS from NMO. Cortical thickness and surface area may provide independent clues regarding the underlying pathology in each disorder.
 
 \end{alertblock} 
 
